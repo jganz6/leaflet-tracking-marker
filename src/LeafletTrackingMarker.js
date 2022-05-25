@@ -43,6 +43,7 @@ const updateMarker = (marker, props, prevProps) => {
   }
   if (previousPosition?.[0] !== position[0] && previousPosition?.[1] !== position[1]) {
     console.log("update marker",props.customAngle);
+    //ss
     const bearingAngle = props.customAngle?props.customAngle:-90
     marker.setRotationAngle(220)
   }
