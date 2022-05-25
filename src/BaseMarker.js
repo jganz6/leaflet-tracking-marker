@@ -29,16 +29,6 @@ L.BaseMarker = L.Marker.extend({
     this.on('move', this.slideCancel, this)
 
     this._slideToUntil = 0;
-    // -- jodie keep rotate 
-    if((this._slideToUntil - performance.now())<0){
-      console.log("bangle = ",this.options.prevBangle," bearing = ",this.options.bearingAngle)
-      if(this.options.prevBangle !== this.options.bearingAngle){
-        this._applyRotation();
-        this.options.prevBangle = this.options.bearingAngle
-      }
-    }
-    //========================================================
-    // Ensure marker keeps rotated during dragging
     this._slideToDuration = 1000
     this._slideToLatLng = [0, 0]
     this._slideFromLatLng = [0, 0]

@@ -41,12 +41,16 @@ const updateMarker = (marker, props, prevProps) => {
       marker.dragging.disable()
     }
   }
-  if (previousPosition?.[0] !== position[0] && previousPosition?.[1] !== position[1]) {
+  // if (previousPosition?.[0] !== position[0] && previousPosition?.[1] !== position[1]) {
     // console.log("update marker",props.customAngle);
     //ss
+    // -- jodie keep rotate 
+    console.log("bangle = ",this.options.prevBangle," bearing = ",this.options.bearingAngle)
+    //========================================================
+    // Ensure marker keeps rotated during dragging
     const bearingAngle = props.customAngle?props.customAngle:0
     marker.setRotationAngle(bearingAngle)
-  }
+  // }
   // if (rotationOrigin !== prevProps.rotationOrigin) {
   //   marker.setRotationOrigin(rotationOrigin)
   // }
