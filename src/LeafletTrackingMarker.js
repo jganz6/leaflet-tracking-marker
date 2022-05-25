@@ -13,7 +13,7 @@ const computeBearing = (previousPosition = defaultPosition, nexPosition) => {
 const createMarker = ({ position, previousPosition, ...options }, ctx) => {
   const bearingAngle = options.customAngle?options.customAngle:-90
   console.log("create marker",options.customAngle)
-  const instance = new BaseMarker(position, { ...options, 220 })
+  const instance = new BaseMarker(position, { ...options, bearingAngle:220 })
   return { instance, context: { ...ctx, overlayContainer: instance } }
 }
 
