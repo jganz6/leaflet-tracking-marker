@@ -3,7 +3,7 @@ var oldIE = L.DomUtil.TRANSFORM === 'msTransform'
 
 L.BaseMarker = L.Marker.extend({
   options: {
-    bearingAngle: -90,
+    bearingAngle: 0,
     rotationOrigin: ''
   },
 
