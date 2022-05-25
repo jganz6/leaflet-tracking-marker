@@ -22,7 +22,15 @@ L.BaseMarker = L.Marker.extend({
 
     this.options.rotationOrigin = this.options.rotationOrigin || iconAnchor || 'center'
     this.options.bearingAngle = this.options.bearingAngle || 0
-
+    // -- jodie keep rotate 
+    if((this._slideToUntil - performance.now())<0){
+      console.log("bangle = ",this.options.prevBangle," bearing = ",this.options.bearingAngle)
+      if(this.options.prevBangle !== this.options.bearingAngle){
+        this._applyRotation();
+        this.options.prevBangle = this.options.bearingAngle
+      }
+    }
+    //========================================================
     // Ensure marker keeps rotated during dragging
     this.on('drag', function (e) {
       e.target._applyRotation()
@@ -71,12 +79,7 @@ L.BaseMarker = L.Marker.extend({
     if (remaining < 0) {
       this.setLatLng(this._slideToLatLng)
       this.fire('moveend')
-      // -- jodie keep rotate 
-      if(this.options.prevBangle !== this.options.bearingAngle){
-        this._applyRotation();
-        this.options.prevBangle = this.options.bearingAngle
-      }
-      //========================================================
+
       if (this._slideDraggingWasAllowed) {
         this._map.dragging.enable()
         this._map.doubleClickZoom.enable()
