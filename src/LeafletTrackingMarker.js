@@ -45,7 +45,7 @@ const updateMarker = (marker, props, prevProps) => {
     // console.log("update marker",props.customAngle);
     //ss
     // -- jodie keep rotate 
-    console.log("bangle = ",this.options.prevBangle," bearing = ",this.options.bearingAngle)
+    console.log(" bearing = ",props.bearingAngle)
     //========================================================
     // Ensure marker keeps rotated during dragging
     const bearingAngle = props.customAngle?props.customAngle:0
