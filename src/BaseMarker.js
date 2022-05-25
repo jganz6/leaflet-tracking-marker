@@ -4,6 +4,7 @@ var oldIE = L.DomUtil.TRANSFORM === 'msTransform'
 L.BaseMarker = L.Marker.extend({
   options: {
     bearingAngle: 0,
+    prevBangle:0,
     rotationOrigin: ''
   },
 
@@ -70,6 +71,12 @@ L.BaseMarker = L.Marker.extend({
     if (remaining < 0) {
       this.setLatLng(this._slideToLatLng)
       this.fire('moveend')
+      // -- jodie keep rotate 
+      if(this.options.prevBangle !== this.options.bearingAngle){
+        this._applyRotation();
+        this.options.prevBangle = this.options.bearingAngle
+      }
+      //========================================================
       if (this._slideDraggingWasAllowed) {
         this._map.dragging.enable()
         this._map.doubleClickZoom.enable()
