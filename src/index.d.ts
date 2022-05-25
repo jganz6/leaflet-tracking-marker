@@ -26,4 +26,7 @@ interface TrackingMarkerOptions extends MarkerOptions {
    * If 'true' it makes map view follow marker
    */
   keepAtCenter: boolean
+
+  // customAngle
+  customAngle: number
 }

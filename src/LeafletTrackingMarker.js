@@ -11,7 +11,7 @@ const computeBearing = (previousPosition = defaultPosition, nexPosition) => {
 }
 
 const createMarker = ({ position, previousPosition, ...options }, ctx) => {
-  const bearingAngle = computeBearing(previousPosition, position)
+  const bearingAngle = options.customAngle?options.customAngle:-90
   const instance = new BaseMarker(position, { ...options, bearingAngle })
   return { instance, context: { ...ctx, overlayContainer: instance } }
 }
@@ -41,7 +41,7 @@ const updateMarker = (marker, props, prevProps) => {
     }
   }
   if (previousPosition?.[0] !== position[0] && previousPosition?.[1] !== position[1]) {
-    const bearingAngle = computeBearing(previousPosition, position)
+    const bearingAngle = props.customAngle?props.customAngle:-90
     marker.setRotationAngle(bearingAngle)
   }
   if (rotationOrigin !== prevProps.rotationOrigin) {
