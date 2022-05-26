@@ -11,7 +11,7 @@ const computeBearing = (previousPosition = defaultPosition, nexPosition) => {
 }
 
 const createMarker = ({ position, previousPosition, ...options }, ctx) => {
-  const bearingAngle = options.customAngle?options.customAngle:0
+  const bearingAngle = options.customAngle?options.customAngle:computeBearing(previousPosition, position)
   // console.log("create marker",options.customAngle)
   const instance = new BaseMarker(position, { ...options, bearingAngle })
   return { instance, context: { ...ctx, overlayContainer: instance } }
@@ -48,7 +48,7 @@ const updateMarker = (marker, props, prevProps) => {
     // console.log(" bearing = ",props.bearingAngle)
     //========================================================
     // Ensure marker keeps rotated during dragging
-    const bearingAngle = props.customAngle?props.customAngle:0
+    const bearingAngle = props.customAngle?props.customAngle:computeBearing(previousPosition, position)
     marker.setRotationAngle(bearingAngle)
   // }
   // if (rotationOrigin !== prevProps.rotationOrigin) {
